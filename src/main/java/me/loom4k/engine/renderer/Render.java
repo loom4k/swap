@@ -1,4 +1,4 @@
-package me.loom4k.engine.graph;
+package me.loom4k.engine.renderer;
 
 import me.loom4k.engine.Window;
 import me.loom4k.engine.scene.Scene;

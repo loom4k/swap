@@ -50,11 +50,11 @@ public class MouseInput {
             boolean rotateY = deltay != 0;
 
             if(rotateX) {
-                displayVector.y = (float) deltax;
+                displayVector.y = (float) -deltax;
             }
 
             if(rotateY) {
-                displayVector.x = (float) deltay;
+                displayVector.x = (float) -deltay;
             }
         }
 

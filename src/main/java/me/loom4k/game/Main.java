@@ -3,6 +3,7 @@ package me.loom4k.game;
 import me.loom4k.engine.*;
 import me.loom4k.engine.graph.*;
 import me.loom4k.engine.input.MouseInput;
+import me.loom4k.engine.renderer.Render;
 import me.loom4k.engine.scene.*;
 
 import org.joml.*;

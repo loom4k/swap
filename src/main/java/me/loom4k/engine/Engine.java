@@ -1,6 +1,6 @@
 package me.loom4k.engine;
 
-import me.loom4k.engine.graph.Render;
+import me.loom4k.engine.renderer.Render;
 import me.loom4k.engine.scene.Scene;
 
 public class Engine {
