@@ -1,5 +1,6 @@
 package me.loom4k.engine;
 
+import me.loom4k.engine.input.MouseInput;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryUtil;
@@ -12,10 +13,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Window {
-    private final long windowHandle;
+    private MouseInput mouseInput;
+
     private int height;
-    private Callable<Void> resizeFunction;
     private int width;
+    private final long windowHandle;
+    private Callable<Void> resizeFunction;
 
     public static class WindowOptions {
         public boolean compatibleProfile;
@@ -70,6 +73,8 @@ public class Window {
             throw new RuntimeException("Failed to create the GLFW window");
         }
 
+        mouseInput = new MouseInput(windowHandle);
+
         glfwSetFramebufferSizeCallback(windowHandle, (window, w, h) -> resized(w, h));
 
         glfwSetErrorCallback((int errorCode, long messagePtr) ->
@@ -120,12 +125,17 @@ public class Window {
         return width;
     }
 
+    public MouseInput getMouseInput() {
+        return mouseInput;
+    }
+
     public boolean isKeyPressed(int keyCode) {
         return glfwGetKey(windowHandle, keyCode) == GLFW_PRESS;
     }
 
     public void pollEvents() {
         glfwPollEvents();
+        mouseInput.input();
     }
 
     protected void resized(int width, int height) {
