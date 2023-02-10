@@ -32,6 +32,8 @@ public class SceneRender {
         uniformsMap.createUniform("viewMatrix");
         uniformsMap.createUniform("modelMatrix");
         uniformsMap.createUniform("txtSampler");
+
+        uniformsMap.createUniform("material.diffuse");
     }
 
     public void render(Scene scene) {

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TextureCache {
-    public static final String DEFAULT_TEXTURE = "resources/models/default/default_texture.jpg";
+    public static final String DEFAULT_TEXTURE = "resources/models/default/default_texture.png";
 
     private Map<String, Texture> textureMap;
 
@@ -23,15 +23,15 @@ public class TextureCache {
 
     public Texture getTexture(String texturePath) {
         Texture texture = null;
-        if(texturePath != null) {
+        if (texturePath != null) {
             texture = textureMap.get(texturePath);
         }
 
-        if(texture == null) {
+        if (texture == null) {
             texture = textureMap.get(DEFAULT_TEXTURE);
         }
 
-         return texture;
+        return texture;
     }
 
 }

@@ -26,6 +26,7 @@ public class MaterialRenderer implements IRenderer {
     @Override
     public void render() {
         for(Material material : model.getMaterialList()) {
+            uniformsMap.setUniform("material.diffuse", material.getDiffuseColor());
             Texture texture = textureCache.getTexture(material.getTexturePath());
             glActiveTexture(GL_TEXTURE0);
             texture.bind();

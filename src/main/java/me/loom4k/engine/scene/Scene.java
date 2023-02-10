@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Scene {
+    private Camera camera;
     private Map<String, Model> modelMap;
     private Projection projection;
     private TextureCache textureCache;
-    private Camera camera;
 
     public Scene(int width, int height) {
         modelMap = new HashMap<>();
@@ -23,10 +23,9 @@ public class Scene {
     public void addEntity(Entity entity) {
         String modelId = entity.getModelId();
         Model model = modelMap.get(modelId);
-        if(model == null) {
+        if (model == null) {
             throw new RuntimeException("Could not find model [" + modelId + "]");
         }
-
         model.getEntitiesList().add(entity);
     }
 
@@ -36,6 +35,10 @@ public class Scene {
 
     public void cleanup() {
         modelMap.values().stream().forEach(Model::cleanup);
+    }
+
+    public Camera getCamera() {
+        return camera;
     }
 
     public Map<String, Model> getModelMap() {
@@ -50,12 +53,7 @@ public class Scene {
         return textureCache;
     }
 
-    public Camera getCamera() {
-        return camera;
-    }
-
     public void resize(int width, int height) {
         projection.updateProjectionMatrix(width, height);
     }
-
 }
